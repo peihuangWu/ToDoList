@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人任务卡</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <script src="../../static/jQuery/jQuery.js"></script>
+    <script src="../../static/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../static/bootstrap-4.4.1-dist/css/bootstrap.css">
+    <style>
+        .classification img {
+            width: 25px;
+            height: 25px;
+        }
+        .classification a {
+            color: black;
+            font-weight: bold;
+        }
+
+        .classification a:hover {
+            text-decoration: none;
+        }
+
+        .operation img {
+            width: 50px;
+            height: 50px;
+
+        }
+
+        .post a {
+            color:inherit;
+        }
+
+        .nav a{
+            color: black;
+        }
+
+        .page-item a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container-fluid bg-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 text-center">
+                    <img src="../../static/images/logo.jpg" alt="" class="rounded-circle logo">
+                </div>
+                <div class="col-md-2 text-center">
+                    <h1 class="mt-3 ml-1">任务卡</h1>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="login mt-4">
+                        <a href="">
+                            <img src="../../static/images/登陆.png" alt="">
+                            <span>{{ username }}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center">
+                    <div class="logout mt-4">
+                        <a href="/logout/">
+                            <img src="../../static/images/退出.png" alt="">
+                            <span>退出</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="classification col-md-2">
+                <div class="mt-5 operation">
+                    <div class="publish mt-3">
+                        <a href="/publish/">
+                            <img src="../../static/images/发帖.png" alt="">
+                            <p class="">新任务</p>
+                        </a>
+                    </div>
+                    <div class="refresh mt-5">
+                        <a href="/index/">
+                            <img src="../../static/images/刷新.png" alt="">
+                            <p class="ml-2">刷新</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content col-md-10">
+                <div class="list">
+                    {% for post in posts %}
+                        <div class="post border-top">
+                            <a href="/todo/{{ post.id }}/">
+                                <p class="title mt-1">{{ post.title }}</p>
+                            </a>
+                            <div class="info1">
+                                <span class="info-time">{{ post.publish_time|date:'Y-m-d H:m' }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="mt-4">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="/index?page={{ page|add:-1 }}" tabindex="-1">上一页</a>
+                </li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="/index?page={{ page }}">{{ page }}</a></li>
+            {% if page < page_num %}
+                <li class="page-item"><a class="page-link" href="/index?page={{ page|add:1 }}">{{ page|add:1 }}</a></li>
+            {% endif %}
+            {% if page|add:1 < page_num %}
+                <li class="page-item"><a class="page-link" href="/index?page={{ page|add:2 }}">{{ page|add:2 }}</a></li>
+            {% endif %}
+            {% if page < page_num %}
+                <li class="page-item">
+                    <a class="page-link" href="/index?page={{ page|add:1 }}">下一页</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>

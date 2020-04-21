@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人任务卡</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <script src="../../static/jQuery/jQuery.js"></script>
+    <script src="../../static/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../static/bootstrap-4.4.1-dist/css/bootstrap.css">
+    <style>
+        .reply {
+            position: relative;
+        }
+
+        .reply-info {
+            bottom: 20px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container-fluid bg-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 text-center">
+                    <img src="../../static/images/logo.jpg" alt="" class="rounded-circle logo">
+                </div>
+                <div class="col-md-2 text-center">
+                    <h1 class="mt-3 ml-1">任务卡</h1>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="login mt-4">
+                        <a href="">
+                            <img src="../../static/images/登陆.png" alt="">
+                            <span>{{ username }}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center">
+                    <div class="logout mt-4">
+                        <a href="/logout/">
+                            <img src="../../static/images/退出.png" alt="">
+                            <span>退出</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mt-3">
+    <div class="container">
+        <div class="row border-bottom">
+            <div class="col-10">
+                <h1>{{ post_info.title }}</h1>
+                <div class="row">
+                    <div class="post-info col-3">
+                        <span>{{ post_info.publish_time|date:'Y-m-d H:m' }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <a href="/setting/{{ post_info.id }}/" class="col-2 offset-6">修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a href="/delete/{{ post_info.id }}/" class="col-1">删除</a>
+                </div>
+                <div class="post-content mt-3">
+                    {{ post_info.content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

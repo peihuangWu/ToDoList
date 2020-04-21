@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人任务卡</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="../../static/jQuery/jQuery.js"></script>
+    <script src="../../static/bootstrap-4.4.1-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../static/bootstrap-4.4.1-dist/css/bootstrap.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+        .input-group{
+            margin:10px 0px;
+        }
+        h3{
+            padding:5px;
+            border-bottom:1px solid #ddd;
+        }
+        li{
+            list-style-type:square;
+            margin:10px 0;
+        }
+        em{
+            color:#c7254e;
+            font-style: inherit;
+            background-color: #f9f2f4;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-6 mt-md-5 offset-3">
+            <div class="well col-md-10">
+                <h3>用户注册</h3>
+                <form action="/register/" method="post">
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                        <input name="username" type="text" class="form-control" placeholder="用户名" aria-describedby="sizing-addon1">
+                    </div>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input name="password1" type="password" class="form-control" placeholder="密码" aria-describedby="sizing-addon1">
+                    </div>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input name="password2" type="password" class="form-control" placeholder="确认密码" aria-describedby="sizing-addon1">
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit">
+                        注册
+                    </button>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
