@@ -8,3 +8,5 @@
 
 前端使用框架: bootstrap4
 后端使用框架: django1.11
+
+数据库:mysql5.7
