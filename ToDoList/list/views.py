@@ -13,7 +13,7 @@ from .forms import *
 # Create your views here.
 class IndexView(View):
     def get(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         posts = Post.objects.all().order_by("-publish_time")
         post_count = posts.count()
@@ -40,7 +40,7 @@ class IndexView(View):
 
 class LoginView(View):
     def get(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return render(request, "login.html", {})
         else:
             return render(request, "index", {
@@ -97,14 +97,14 @@ class RegisterView(View):
 
 class PublishView(View):
     def get(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         return render(request, "publish_post.html", {
             "username": request.user.username
         })
 
     def post(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         title = request.POST.get("title", "")
         if title == "":
@@ -120,7 +120,7 @@ class PublishView(View):
 
 class PostView(View):
     def get(self, request, id):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         try:
             post_info = Post.objects.get(id=id)
@@ -133,13 +133,13 @@ class PostView(View):
         })
 
     def post(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
 
 
 class DeleteView(View):
     def get(self, request, id):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         try:
             post_info = Post.objects.get(id=id)
@@ -153,7 +153,7 @@ class DeleteView(View):
 
 class SettingView(View):
     def get(self, request, id):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         try:
             post_info = Post.objects.get(id=id)
@@ -169,7 +169,7 @@ class SettingView(View):
         })
 
     def post(self, request, id):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse("login"))
         try:
             post_info = Post.objects.get(id=id)
