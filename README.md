@@ -1,7 +1,6 @@
 # ToDoList
 个人任务卡
 
-<<<<<<< HEAD
 本项目是一个基于前后端分离技术的个人任务卡，后台url设计风格遵循restful风格，主要功能有添加新任务、删除任务、修改任务等。后台url设计风格遵循restful风格。
 
 前端开发语言：html5 css3 javascript（es6）前端开发语言：python3.6
@@ -57,14 +56,3 @@ python manage.py migrate
 python manage.py runserver
 ```
 5.在浏览器窗口输入 http://127.0.0.1:8000/即可运行web项目。
-=======
-本项目是一个基于前后端分离技术的个人任务卡，后台url设计风格遵循restful风格，主要功能有添加新任务、删除任务、修改任务等。
-
-前端开发语言: html5 css3 javascript(es6)
-后端开发语言: python3.6
-
-前端使用框架: bootstrap4
-后端使用框架: django1.11
-
-数据库:mysql5.7
->>>>>>> 816667e49133d5a6dd14a8e1cb3f6c160dadf938
